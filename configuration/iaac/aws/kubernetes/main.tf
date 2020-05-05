@@ -1,9 +1,9 @@
 # aws --version
 # aws eks --region us-east-1 update-kubeconfig --name in28minutes-cluster
 # Uses default VPC and Subnet. Create Your Own VPC and Private Subnets for Prod Usage.
-# terraform-backend-state-in28minutes-123
-# AKIA4AHVNOD7OOO6T4KI
-
+# arn:aws:s3:::tf-backend-state-masala
+# AKIASNY4QF77QNUQMI5V
+# vpc-d522d3b0
 
 terraform {
   backend "s3" {
@@ -30,10 +30,11 @@ provider "kubernetes" {
 }
 
 module "in28minutes-cluster" {
+  # This module creates an elactic Kube cluster and worker instances
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "in28minutes-cluster"
   cluster_version = "1.14"
-  subnets         = ["subnet-3f7b2563", "subnet-4a7d6a45"] #CHANGE
+  subnets         = ["subnet-266b210e", "subnet-86ccc5f2"]
   #subnets = data.aws_subnet_ids.subnets.ids
   vpc_id          = aws_default_vpc.default.id
 
@@ -57,7 +58,7 @@ data "aws_eks_cluster_auth" "cluster" {
   name = module.in28minutes-cluster.cluster_id
 }
 
-
+#tf-backend-state-masala
 # We will use ServiceAccount to connect to K8S Cluster in CI/CD mode
 # ServiceAccount needs permissions to create deployments 
 # and services in default namespace
