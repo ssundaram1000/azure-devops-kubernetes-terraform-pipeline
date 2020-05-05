@@ -55,8 +55,8 @@ stages:
         kubernetesServiceConnection: 'aws-kube-cluster-service-connection'
         namespace: 'default'
         manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
-        containers: in28min/currency-exchange-devops:$(tag)
-# BUILD STAGE
+        containers: ssundaram1000/currency-exchange-devops:$(tag)
+# BUILD STAGE - Stage
 # Build Docker
 # Push Docker => 100 - assuming docker image is assigned a tag of 100
 # Copy files to Staging Directory (deployment.yaml)
