@@ -12,16 +12,16 @@ stages:
   displayName: Build image
   jobs:  
   - job: Build
-    displayName: Build
+    displayName: Build image
     pool:
       vmImage: 'ubuntu-latest'
     steps:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        containerRegistry: 'ssundaram1000-docker-hub'
-        repository: 'ssundaram1000/currency-exchange-devops'
+        containerRegistry: 'dockerhub-dockerhub'
+        repository: 'ssundaram1000/currency-exchange-azure-devops'
         command: 'buildAndPush'
-        Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
     
