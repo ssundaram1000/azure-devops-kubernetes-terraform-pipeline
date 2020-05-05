@@ -19,9 +19,9 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        containerRegistry: 'dockerhub-dockerhub'
+        containerRegistry: 'ssundaram1000-docker-hub'
         repository: 'ssundaram1000/currency-exchange-devops'
         command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
+        Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: '$(tag)'
     
