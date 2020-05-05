@@ -16,6 +16,7 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+    - sh "git config --system core.longpaths true"
     - task: Docker@2
       displayName: Build an image
       inputs:
