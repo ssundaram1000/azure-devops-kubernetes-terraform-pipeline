@@ -23,7 +23,7 @@ stages:
     - task: Docker@2
       inputs:
         containerRegistry: 'dockerhub-dockerhub'
-        repository: 'ssundaram/currency-exchange-devops'
+        repository: 'ssundaram1000/currency-exchange-devops'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
