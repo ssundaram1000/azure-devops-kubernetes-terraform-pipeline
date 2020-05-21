@@ -33,7 +33,7 @@ module "ssundaram1000-cluster" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "ssundaram1000-cluster"
   cluster_version = "1.14"
-  subnets         = ["subnet-bac5a380", "subnet-9f1f7cfa"]
+  subnets         = ["subnet-e44369a2", "subnet-9f1f7cfa"]
   #subnets = data.aws_subnet_ids.subnets.ids
   vpc_id          = aws_default_vpc.default.id
 
