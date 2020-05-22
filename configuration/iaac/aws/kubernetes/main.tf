@@ -1,7 +1,7 @@
 # aws --version
-# aws eks --region us-east-1 update-kubeconfig --name in28minutes-cluster
+# aws eks --region us-east-1 update-kubeconfig --name ssundaram1000-cluster
 # Uses default VPC and Subnet. Create Your Own VPC and Private Subnets for Prod Usage.
-# arn:aws:s3:::tf-backend-state-masala
+# arn:aws:s3:::terraform-backend-state-masala
 # vpc-d522d3b0
 
 terraform {
@@ -28,12 +28,12 @@ provider "kubernetes" {
   version                = "~> 1.9"
 }
 
-module "in28minutes-cluster" {
+module "ssundaram1000-cluster" {
   # This module creates an elactic Kube cluster and worker instances
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "in28minutes-cluster"
+  cluster_name    = "ssundaram1000-cluster"
   cluster_version = "1.14"
-  subnets         = ["subnet-266b210e", "subnet-86ccc5f2"]
+  subnets         = ["subnet-e44369a2", "subnet-9f1f7cfa"]
   #subnets = data.aws_subnet_ids.subnets.ids
   vpc_id          = aws_default_vpc.default.id
 
@@ -42,7 +42,7 @@ module "in28minutes-cluster" {
   node_groups = [
     {
       instance_type = "t2.micro"
-      max_capacity  = 5
+      max_capacity  = 3
       desired_capacity = 3
       min_capacity  = 3
     }
@@ -50,11 +50,11 @@ module "in28minutes-cluster" {
 }
 
 data "aws_eks_cluster" "cluster" {
-  name = module.in28minutes-cluster.cluster_id
+  name = module.ssundaram1000-cluster.cluster_id
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = module.in28minutes-cluster.cluster_id
+  name = module.ssundaram1000-cluster.cluster_id
 }
 
 #tf-backend-state-masala
