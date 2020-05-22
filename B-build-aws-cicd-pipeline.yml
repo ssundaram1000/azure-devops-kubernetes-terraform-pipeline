@@ -63,10 +63,11 @@ stages:
     - task: KubernetesManifest@0
       inputs:
         action: 'deploy'
-        kubernetesServiceConnection: 'Azure to Kube connection'
+        kubernetesServiceConnection: 'azure-to-gke-connection'
         namespace: 'default'
         manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
-        containers: ssundaram1000/currency-exchange-devops:$(tag)
+        containers: 'ssundaram1000/currency-exchange-devops:$(tag)'
+
 # DEPLOY STAGE
 # Download the artifacts
 # Use the image with tag xx => Deploy to K8s
