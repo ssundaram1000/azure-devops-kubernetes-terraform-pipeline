@@ -65,7 +65,7 @@ stages:
         action: 'deploy'
         kubernetesServiceConnection: 'azure-to-gke-connection'
         namespace: 'default'
-        manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/deployment.yaml'
+        manifests: '$(System.ArtifactsDirectory)/configuration/kubernetes/gke/deployment.yaml'
         containers: 'ssundaram1000/currency-exchange-devops:$(tag)'
 
 # DEPLOY STAGE
